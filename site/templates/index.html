@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <v-navigation-drawer fixed v-model="drawer" app>
+        <v-list dense>
+            <v-list-tile @click="">
+                <v-list-tile-action>
+                    <v-icon>home</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Home</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+            <v-list-tile @click="">
+                <v-list-tile-action>
+                    <v-icon>contact_mail</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title>Contact</v-list-tile-title>
+                </v-list-tile-content>
+            </v-list-tile>
+        </v-list>
+    </v-navigation-drawer>
+    <v-toolbar color="primary" fixed app>
+        <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+        <v-toolbar-title>Sensorial</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+        <v-container fluid fill-height>
+            <v-layout justify-center align-left>
+                <v-flex text-xs-justify>
+                    <v-card color="secondary" class="white--text">
+                        <v-layout row wrap align-center>
+                            <v-flex xs7>
+                                <v-card-title primary-title>
+                                    <div>
+                                        <div class="headline">
+                                            <strong>Sensor Information at your hands!</strong>
+                                        </div><br />
+                                        <p>
+                                            Sensorial is an easy and simple app that allow you to see sensor information!<br /><br />
+                                            Sensor information can came from any part of our today lives, but one thing is for sure, we can't access that information in a very simple 
+                                            way and decide which data is usefull or not. The focus of Sensorial is bring this to your hands!<br /><br />
+                                            We use internet services to load sensor data based on your location and time, bringing in this way the most recent and update information. 
+                                            Also, we get information about the sensors that exists in our smartphone/computer! Few people know, but our smartphones 
+                                            can come with built in sensor modules beyond GPS, some phones bring pressure modules and so on.<br /><br />
+                                            If you enjoy our website, there's also a little app on Google Play Store, download it, and make a review and share that to your frinds!<br /><br />
+                                            Thanks!
+                                        </p>
+                                    </div>
+                                </v-card-title>
+                            </v-flex>
+                            <v-flex xs5>
+                                <v-img width=250 src="/static/image/sensorial1_en.png" contain></v-img>
+                            </v-flex>
+                        </v-layout>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </v-content>
+{% endblock %}
