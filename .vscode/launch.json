@@ -5,15 +5,21 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: FastAPI",
+            "name": "Python: Sensorial",
             "type": "python",
-            "request": "launch",
-            "module": "uvicorn",
-            "args": [
-                "app.main:app"
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/app",
+                    "remoteRoot": "/code/app"
+                }
             ],
-            "jinja": true,
-            "justMyCode": true
+            "justMyCode": true,
+            "envFile": "${workspaceFolder}/.env",
         }
     ]
 }

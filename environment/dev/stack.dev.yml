@@ -1,0 +1,48 @@
+version: "3.7"
+
+services:
+  localstack:
+    image: localstack/localstack
+    hostname: localstack
+    container_name: localstack
+    restart: unless-stopped
+    ports:
+      - "4510-4559:4510-4559" # external service port range
+      - "4566:4566" # LocalStack Edge Proxy
+    environment:
+      - DEBUG=true
+      - DATA_DIR=/tmp/data
+      - LAMBDA_EXECUTOR=local
+      - HOST_TMP_FOLDER=/tmp/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  frontend:
+    image: nginx:1.21.6-alpine
+    hostname: frontend
+    container_name: frontend
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+    volumes:
+      - ../../static:/www/data/static
+      - ./front/nginx_default.conf:/etc/nginx/conf.d/default.conf
+  backend:
+    build: ./back
+    hostname: backend
+    container_name: backend
+    restart: unless-stopped
+    environment:
+      IS_OFFLINE: 1
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    ports:
+      - "5678:5678"
+      - "8000:8000"
+    #command: >
+    #  bash -c "gunicorn app.main:app -b 0.0.0.0:8000 -w 2 --log-level debug --capture-output --enable-stdio-inheritance -k uvicorn.workers.UvicornWorker"
+    command: >
+      bash -c "python -m debugpy --wait-for-client --listen 0.0.0.0:5678 -m gunicorn app.main:app -b 0.0.0.0:8000 -w 2 --log-level debug --reload --capture-output --enable-stdio-inheritance -k uvicorn.workers.UvicornWorker"
+    volumes:
+      - ../../:/code
