@@ -1,5 +1,5 @@
-from app.astronomy.models import Sattelites
-from app.astronomy.rule import load_sattelite_data
+from app.business.astronomy.models import Sattelites
+from app.business.astronomy.rule import load_sattelite_data
 from fastapi import APIRouter
 
 router = APIRouter(

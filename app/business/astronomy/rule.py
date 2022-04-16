@@ -1,5 +1,5 @@
 import httpx
-from app.astronomy.models import HST, ISS, Sattelites
+from app.business.astronomy.models import HST, ISS, Sattelites
 
 HST_DATA_URL = "http://www.celestrak.com/NORAD/elements/science.txt"
 ISS_DATA_URL = "http://www.celestrak.com/NORAD/elements/stations.txt"
