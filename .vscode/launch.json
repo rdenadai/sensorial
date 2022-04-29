@@ -18,7 +18,7 @@
                     "remoteRoot": "/code/app"
                 }
             ],
-            "justMyCode": true,
+            "justMyCode": false,
             "envFile": "${workspaceFolder}/.env",
         }
     ]
