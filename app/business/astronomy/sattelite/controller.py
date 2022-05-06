@@ -1,6 +1,7 @@
+from fastapi import APIRouter, Depends
+
 from app.business.astronomy.sattelite.models import Sattelite, Sattelites
 from app.business.astronomy.sattelite.rule import SatteliteRules
-from fastapi import APIRouter, Depends
 
 router = APIRouter(
     prefix="/astronomy/sattelite",

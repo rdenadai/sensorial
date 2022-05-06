@@ -2,8 +2,9 @@ from functools import lru_cache
 
 import ephem
 import httpx
-from app.business.astronomy.sattelite.models import HST, ISS, Sattelite, Sattelites
 from requests import Response, request
+
+from app.business.astronomy.sattelite.models import HST, ISS, Sattelite, Sattelites
 
 HST_DATA_URL = "http://www.celestrak.com/NORAD/elements/science.txt"
 ISS_DATA_URL = "http://www.celestrak.com/NORAD/elements/stations.txt"
