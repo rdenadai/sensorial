@@ -8,16 +8,16 @@ from app.business.astronomy.planets.models import Planet, PlanetType, SolarSyste
 
 
 class ObserverBuilder:
-    def __init__(self, lat: str, lng: str, alt: str):
-        self.lat = lat
-        self.lng = lng
-        self.alt = alt
+    def __init__(self, latitude: str, longitude: str, altitude: str):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
 
     def build(self) -> Observer:
         observer = Observer()
-        observer.lat = self.lat
-        observer.lon = self.lng
-        observer.elevation = self.alt
+        observer.lat = self.latitude
+        observer.lon = self.longitude
+        observer.elevation = self.altitude
         return observer
 
 
@@ -50,13 +50,13 @@ class PlanetBuilder:
 
 
 class SolarSystemBuilder:
-    def __init__(self, lat: str, lng: str, alt: str):
-        self.lat = lat
-        self.lng = lng
-        self.alt = alt
+    def __init__(self, latitude: str, longitude: str, altitude: str):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = altitude
 
     def build(self):
-        observer = ObserverBuilder(self.lat, self.lng, self.alt).build()
+        observer = ObserverBuilder(self.latitude, self.longitude, self.altitude).build()
         planet_builder = PlanetBuilder(observer)
         solar_system: dict[str:Planet] = {
             planet_type.name.title(): planet_builder.build(planet_type.value)
