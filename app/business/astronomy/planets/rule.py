@@ -1,10 +1,10 @@
 from calendar import timegm
 from datetime import datetime
-from operator import itemgetter
 
-from app.business.astronomy.planets.models import Planet, PlanetType, SolarSystem
 from ephem import Moon, Observer, constellation, next_full_moon, next_new_moon
 from numpy import rad2deg
+
+from app.business.astronomy.planets.models import Planet, PlanetType, SolarSystem
 
 
 class ObserverBuilder:
@@ -59,6 +59,7 @@ class SolarSystemBuilder:
         observer = ObserverBuilder(self.lat, self.lng, self.alt).build()
         planet_builder = PlanetBuilder(observer)
         solar_system: dict[str:Planet] = {
-            planet_type.name: planet_builder.build(planet_type.value) for planet_type in PlanetType
+            planet_type.name.title(): planet_builder.build(planet_type.value)
+            for planet_type in PlanetType
         }
         return SolarSystem(**solar_system)

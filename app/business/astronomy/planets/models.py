@@ -6,16 +6,16 @@ from pydantic import BaseModel
 
 
 class PlanetType(Enum):
-    Sun = Sun
-    Mercury = Mercury
-    Venus = Venus
-    Moon = Moon
-    Mars = Mars
-    Jupiter = Jupiter
-    Saturn = Saturn
-    Neptune = Neptune
-    Uranus = Uranus
-    Pluto = Pluto
+    SUN = Sun
+    MERCURY = Mercury
+    VENUS = Venus
+    MOON = Moon
+    MARS = Mars
+    JUPITER = Jupiter
+    SATURN = Saturn
+    NEPTUNE = Neptune
+    URANUS = Uranus
+    PLUTO = Pluto
 
 
 class Planet(BaseModel):
