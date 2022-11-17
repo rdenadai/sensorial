@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" class="has-navbar-fixed-top">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sensorial</title>
+        <meta name="description" content="Sensorial information page">
+        <meta name="author" content="Rodolfo De Nadai">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://sensorial.denadai.com">
+                    <img src="{{ url_for('static', path='img/logo.png') }}" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="28" height="28">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<h1 class="title">Sensorial</h1>
+                </a>
+            </div>
+        </nav>
+        <br />
+        <div class="container is-fluid">
+            <div class="columns">
+                <div class="column is-one-fifth">
+                    <aside class="menu">
+                        <p class="menu-label">
+                            General
+                        </p>
+                        <ul class="menu-list">
+                            <li><a href="/" {% if name == "main" %}class="is-active"{% endif %}>Main</a></li>
+                            <li><a href="docs/">Documentation</a></li>
+                            <li><a href="terms/" {% if name == "terms" %}class="is-active"{% endif %}>Terms and Conditions</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

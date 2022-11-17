@@ -5,12 +5,12 @@ description = "API for get sensory information"
 authors = ["Rodolfo De Nadai <rdenadai@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-httpx = "^0.22.0"
+python = ">=3.10,<=3.11.0"
+httpx = "^0.23.0"
 pyephem = "^9.99"
-fastapi = {version = "0.75.0", extras = ["all"]}
+fastapi = {version = "0.87.0", extras = ["all"]}
 gunicorn = "^20.1.0"
-boto3 = "^1.21.42"
+boto3 = "^1.26.11"
 numpy = "^1.22.3"
 
 [tool.poetry.dev-dependencies]
@@ -24,6 +24,7 @@ mccabe = "0.6.1"
 pytest = "^7.1.1"
 pytest-cov = "^3.0.0"
 perflint = "^0.7.1"
+debugpy = "^1.6.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

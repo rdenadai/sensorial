@@ -20,15 +20,15 @@ class PlanetType(Enum):
 
 class Planet(BaseModel):
     name: str
-    sun_distance: str
-    earth_distance: str
+    sun_distance: float
+    earth_distance: float
     phase: int
     zodiac: str
     ra: Optional[float] = 0.0
     dec: Optional[float] = 0.0
-    altitude: str
-    azimut: str
-    mag: str
+    altitude: float
+    azimut: float
+    mag: float
     moon_phase: Optional[int] = 0
     next_new_moon: Optional[int] = 0
     next_full_moon: Optional[int] = 0

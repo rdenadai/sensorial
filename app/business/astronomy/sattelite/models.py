@@ -26,25 +26,22 @@ class Sattelite(BaseModel):
     elevation: Optional[int] = 0
     next_passes: Optional[List[NextSattelitePasses]] = Field(default_factory=list)
 
+    def _parse_tle_data(self, data: list[str]) -> None:
+        if data:
+            self.tle_1 = str(data[1].strip())
+            self.tle_2 = str(data[2].strip())
+
 
 class HST(Sattelite):
     def __init__(self, data: list[str]) -> None:
         super().__init__(name="Hubble Space Telescope")
         self._parse_tle_data(data)
 
-    def _parse_tle_data(self, data: list[str]):
-        self.tle_1 = str(data[1].strip())
-        self.tle_2 = str(data[2].strip())
-
 
 class ISS(Sattelite):
     def __init__(self, data: list[str]) -> None:
         super().__init__(name="Internation Space Station")
         self._parse_tle_data(data)
-
-    def _parse_tle_data(self, data: list[str]):
-        self.tle_1 = data[1].strip()
-        self.tle_2 = data[2].strip()
 
 
 class Sattelites(BaseModel):

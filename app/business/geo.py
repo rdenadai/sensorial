@@ -1,8 +1,9 @@
 import re
+from math import asin, cos, pow, radians, sin, sqrt
 
 
 def decdeg2dms(decdeg: float) -> tuple[float, float, float]:
-    negative = decdeg < 0
+    negative: bool = decdeg < 0
     decdeg = abs(decdeg)
     minutes, seconds = divmod(decdeg * 3600, 60)
     degrees, minutes = divmod(minutes, 60)
@@ -20,9 +21,9 @@ def decdeg2dms(decdeg: float) -> tuple[float, float, float]:
 # returns a array of decimals [lat,lng]
 # Ex: "48°53'10.18"N,2°20'35.09"E" to "48.8866, 2.34330"
 # https://gist.github.com/adamraudonis/7671459
-def dms_coord_2_dec_array(dms_coord_str: str) -> list:
+def dms_coord_2_dec_array(dms_coord_str: str) -> tuple[float, float]:
     lat, lng = dms_coord_str.split(",")
-    return [dms2dec(lat), dms2dec(lng)]
+    return (dms2dec(lat), dms2dec(lng))
 
 
 # Given a comma separated DMS coordinate "lat,lng",
@@ -77,13 +78,26 @@ def dms2dec(dms_str: str) -> float:
     if re.match("[swSW-]", dms_str):
         sign = -1
 
-    if "-" in dms_str:
-        dms_str = dms_str.replace("-", "")
+    dms_str = dms_str.replace("-", "")
     (degree, minute, second, frac_seconds) = re.split("\D+", dms_str, maxsplit=4)
     frac_seconds_len = len(frac_seconds)
     frac_seconds = float(frac_seconds)
-    for _ in range(frac_seconds_len):
-        frac_seconds = frac_seconds / 10.0
-    return sign * (
-        int(degree) + float(minute) / 60 + float(second) / 3600 + float(frac_seconds) / 36000
-    )
+    frac_seconds /= pow(10, frac_seconds_len)
+    return sign * (int(degree) + float(minute) / 60 + float(second) / 3600 + float(frac_seconds) / 36000)
+
+
+def haversine(lng1: float, lat1: float, lng2: float, lat2: float) -> int:
+    """
+    Calculate the great circle distance between two points
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians
+    lon1, lat1, lon2, lat2 = map(radians, [lng1, lat1, lng2, lat2])
+
+    # haversine formula
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+    a = sin(dlat / 2) ** 2 + cos(lat1) * cos(lat2) * sin(dlon / 2) ** 2
+    c = 2 * asin(sqrt(a))
+    r = 6371  # Radius of earth in kilometers. Use 3956 for miles
+    return int(c * r)

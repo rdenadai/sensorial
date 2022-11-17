@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+    <h1 class="title is-4">Sensorial, sensor data at your hand!</h1>
+    <p class="block">This is a free API that can be used to collect the following features</p>
+    <ul class="block">
+        <li>Sattelite from Hubble and ISS</li>
+        <li>Solar System data (planets and the moon)</li>
+        <li>Seasons data</li>
+        <li>Earthquake data</li>
+    </ul>
+    <p class="block">Please check the <strong>Documentation</strong> section on the left to better explanation of usage.</p>
+    <h1 class="title is-4">Sources</h1>
+    <p class="block">Hubble and ISS data are taken from <strong><a href="https://celestrak.org/">Celestrak</a></strong>.</p>
+    <ul class="block">
+        <li><a href="http://www.celestrak.com/NORAD/elements/science.txt">Hubble Space Telescope (HST)</a></li>
+        <li><a href="http://www.celestrak.com/NORAD/elements/stations.txt">International Space Station (ISS)</a></li>
+    </ul>
+    <p class="block">Earthquake Data is taken from <strong><a href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes">USGS</a></strong>.</p>
+    <ul class="block">
+        <li><a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson">USGS Earthquake (all hour)</a></li>
+    </ul>
+    <p class="block">Solar System and Seasons are calculated using <strong><a href="https://pypi.org/project/pyephem/">pyephem</a></strong>.</p>
+    <h1 class="title is-4">Github</h1>
+    <p class="block">This site and all it's source code are available in <strong>Github</strong> at <a href="https://github.com/rdenadai/sensorial">rdenadai/sensorial</a>.</p>
+</div>
+{% endblock %}

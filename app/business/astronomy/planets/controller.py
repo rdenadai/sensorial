@@ -13,6 +13,8 @@ router = APIRouter(
 @router.get("/", response_model=SolarSystem)
 async def get_data(latitude: float, longitude: float, altitude: float) -> SolarSystem:
     solar_system: SolarSystem = SolarSystemBuilder(
-        latitude=latitude, longitude=longitude, altitude=altitude
+        latitude=latitude,
+        longitude=longitude,
+        altitude=altitude,
     ).build()
     return solar_system
