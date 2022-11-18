@@ -36,5 +36,5 @@ async def index(request: Request):
 
 
 @app.get("/terms", response_class=HTMLResponse)
-async def index(request: Request):
+async def terms(request: Request):
     return templates.TemplateResponse("terms.html", {"request": request, "name": "terms"})
