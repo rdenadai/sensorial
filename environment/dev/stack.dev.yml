@@ -30,9 +30,7 @@ services:
     ports:
       - "5678:5678"
       - "8000:8000"
-    #command: >
-    #  bash -c "gunicorn app.main:app -b 0.0.0.0:8000 -w 2 --log-level debug --capture-output --enable-stdio-inheritance -k uvicorn.workers.UvicornWorker"
     command: >
-      bash -c "python -m debugpy --listen 0.0.0.0:5678 -m gunicorn app.main:app -b 0.0.0.0:8000 -w 1 --log-level debug --reload --capture-output --enable-stdio-inheritance -k uvicorn.workers.UvicornWorker"
+      bash -c "python -m debugpy --wait-for-client --listen 0.0.0.0:5678 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
     volumes:
       - ../../:/code
