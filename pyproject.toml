@@ -6,25 +6,25 @@ authors = ["Rodolfo De Nadai <rdenadai@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<=3.11.0"
-httpx = "^0.23.0"
+httpx = "^0.24.1"
 pyephem = "^9.99"
-fastapi = {version = "0.87.0", extras = ["all"]}
+fastapi = {version = "^0.100.0", extras = ["all"]}
 gunicorn = "^20.1.0"
-boto3 = "^1.26.11"
-numpy = "^1.22.3"
+boto3 = "^1.28.3"
+numpy = "^1.25.1"
 
 [tool.poetry.dev-dependencies]
-black = "^22.3.0"
-isort = "^5.10.1"
+black = "^23.7.0"
+isort = "^5.12.0"
 flake8 = "^4.0.1"
-bandit = "^1.7.4"
-pylint = "^2.13.5"
-mypy = "^0.942"
+bandit = "^1.7.5"
+pylint = "^2.17.4"
+mypy = "^1.4.1"
 mccabe = "0.6.1"
-pytest = "^7.1.1"
-pytest-cov = "^3.0.0"
-perflint = "^0.7.1"
-debugpy = "^1.6.3"
+pytest = "^7.4.0"
+pytest-cov = "^4.1.0"
+perflint = "^0.7.3"
+debugpy = "^1.6.7"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
